@@ -35,7 +35,7 @@ public class SaveData : MonoBehaviour
     {
         string filePath = Application.persistentDataPath + "/GameData.jhon";
         string data = System.IO.File.ReadAllText(filePath);
-        
+
         gameData = JsonUtility.FromJson<GameData>(data);
     }
 }

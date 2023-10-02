@@ -2,17 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Achievement : MonoBehaviour
+[CreateAssetMenu(fileName = "Scriptable", menuName = "Scriptable Object/Achievement")]
+public class Achievement : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public int selesai;
+    public string namaAchievement;
+    public int value;
+    public int maxValue;
 }
