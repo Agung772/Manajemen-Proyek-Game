@@ -9,8 +9,7 @@ public class Player : MonoBehaviour
     public float speedMove = 5;
     [ReadOnly] public float m_speedMove;
 
-    public float speedRot = 30;
-    float rot;
+    public float speedRot = 100;
 
     [SerializeField] CharacterController charController;
     UIGameplay uiGameplay;
@@ -28,6 +27,7 @@ public class Player : MonoBehaviour
     {
         Move();
         AkselerasiSpeed();
+        RemPC();
     }
 
     void Move()
@@ -37,7 +37,7 @@ public class Player : MonoBehaviour
         Vector3 v3 = charController.transform.forward;
 
         charController.Move(v3 * m_speedMove * Time.deltaTime);
-        charController.transform.Rotate(Vector3.up * inputX * 100 * Time.deltaTime);
+        charController.transform.Rotate(Vector3.up * inputX * speedRot * Time.deltaTime);
     }
 
 
@@ -51,12 +51,25 @@ public class Player : MonoBehaviour
         {
             m_speedMove = Mathf.Lerp(m_speedMove, speedMove, 0.1f * Time.deltaTime);
         }
-        uiGameplay.speedText.text = "Speed Player : " + m_speedMove.ToString("F1");
+
+        float speedKMH = charController.velocity.magnitude * 3.6f;
+        uiGameplay.speedText.text = "Speed Player : " + speedKMH.ToString("F1") + " km/h";
     }
 
     bool rem;
     public void Rem(bool value)
     {
         rem = value;
+    }
+    public void RemPC()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            rem = true;
+        }
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            rem = false;
+        }
     }
 }

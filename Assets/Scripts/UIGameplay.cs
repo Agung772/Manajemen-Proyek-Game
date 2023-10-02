@@ -8,7 +8,7 @@ public class UIGameplay : MonoBehaviour
     public static UIGameplay instance;
 
     public TextMeshProUGUI speedText;
-
+    public TextMeshProUGUI gameTimeText;
     private void Awake()
     {
         instance = this;
