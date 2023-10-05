@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
         Move();
         AkselerasiSpeed();
         RemPC();
+        SpeedometerUI();
     }
 
     void Move()
@@ -51,9 +52,6 @@ public class Player : MonoBehaviour
         {
             m_speedMove = Mathf.Lerp(m_speedMove, speedMove, 0.1f * Time.deltaTime);
         }
-
-        float speedKMH = charController.velocity.magnitude * 3.6f;
-        uiGameplay.speedText.text = "Kecepatan Player : " + speedKMH.ToString("F1") + " km/h";
     }
 
     bool rem;
@@ -71,5 +69,17 @@ public class Player : MonoBehaviour
         {
             rem = false;
         }
+    }
+
+    public float maxSpeedometer;
+    public float minAngleArrow;
+    public float maxAngleArrow;
+    void SpeedometerUI()
+    {
+        float speedKMH = charController.velocity.magnitude * 3.6f;
+
+        uiGameplay.speedText.text = ((int)speedKMH) + " km/h";
+        uiGameplay.arrowRectT.localEulerAngles =
+                new Vector3(0, 0, Mathf.Lerp(minAngleArrow, maxAngleArrow, speedKMH / maxSpeedometer));
     }
 }

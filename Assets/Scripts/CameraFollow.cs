@@ -6,10 +6,11 @@ public class CameraFollow : MonoBehaviour
 {
     public float speed;
     public Transform target;
-    public Vector3 offset;
+    Vector3 offset;
     private void Start()
     {
         transform.parent = null;
+        offset = transform.localPosition;
     }
     private void Update()
     {
