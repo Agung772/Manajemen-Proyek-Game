@@ -26,6 +26,9 @@ public class GameplayManager : MonoBehaviour
     void GameTime()
     {
         gameTime += Time.deltaTime;
-        uiGameplay.gameTimeText.text = "Game time : " + gameTime.ToString("F1");
+
+        float menit = Mathf.FloorToInt(gameTime / 60);
+        float detik = Mathf.FloorToInt(gameTime % 60);
+        uiGameplay.gameTimeText.text = "Waktu : " + string.Format("{0:00}:{1:00}", menit, detik);
     }
 }

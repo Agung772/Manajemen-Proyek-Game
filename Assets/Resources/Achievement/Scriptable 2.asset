@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Scriptable 2
   m_EditorClassIdentifier: 
   selesai: 0
-  namaAchievement: Capai kecepatan 60 km/h
+  namaAchievement: Capai kecepatan 10 km/h
   value: 0
-  maxValue: 60
+  maxValue: 10

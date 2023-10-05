@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Scriptable 4
   m_EditorClassIdentifier: 
   selesai: 0
-  namaAchievement: Otw
+  namaAchievement: Otw 1
   value: 0
   maxValue: 50

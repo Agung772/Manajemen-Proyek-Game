@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] UIManager uiManager;
     [SerializeField] SaveData saveData;
     [SerializeField] AudioManager audioManager;
+    [SerializeField] AchievementManager achievementManager;
 
     public Sprite[] sprites;
     private void Awake()
@@ -21,6 +22,7 @@ public class GameManager : MonoBehaviour
             UIManager.instance = uiManager;
             SaveData.instance = saveData;
             AudioManager.instance = audioManager;
+            AchievementManager.instance = achievementManager;
 
             saveData.Load();
             DontDestroyOnLoad(gameObject);
@@ -30,7 +32,11 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        sprites = Resources.LoadAll<Sprite>("Item/");
-        
+        StartCoroutine(Coroutine());
+        IEnumerator Coroutine()
+        {
+            yield return new WaitForSeconds(0.1f);
+
+        }
     }
 }

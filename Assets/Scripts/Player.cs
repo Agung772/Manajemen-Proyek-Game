@@ -53,7 +53,7 @@ public class Player : MonoBehaviour
         }
 
         float speedKMH = charController.velocity.magnitude * 3.6f;
-        uiGameplay.speedText.text = "Speed Player : " + speedKMH.ToString("F1") + " km/h";
+        uiGameplay.speedText.text = "Kecepatan Player : " + speedKMH.ToString("F1") + " km/h";
     }
 
     bool rem;
