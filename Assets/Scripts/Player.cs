@@ -82,4 +82,11 @@ public class Player : MonoBehaviour
         uiGameplay.arrowRectT.localEulerAngles =
                 new Vector3(0, 0, Mathf.Lerp(minAngleArrow, maxAngleArrow, speedKMH / maxSpeedometer));
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+
+    }
+
+    
 }

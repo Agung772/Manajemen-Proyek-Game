@@ -9,8 +9,8 @@ public class CameraFollow : MonoBehaviour
     Vector3 offset;
     private void Start()
     {
-        transform.parent = null;
         offset = transform.localPosition;
+        transform.parent = null;
     }
     private void Update()
     {

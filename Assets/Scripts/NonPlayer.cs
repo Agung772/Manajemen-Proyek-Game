@@ -7,28 +7,33 @@ public class NonPlayer : MonoBehaviour
 {
     [SerializeField] NavMeshAgent agent;
 
-    int index;
-    [SerializeField] Transform transformO;
+    [SerializeField] int index;
+    [SerializeField] Transform[] waypoints;
     private void Start()
     {
-        float x = transform.position.x;
-        float z = transform.position.z;
-        agent.SetDestination(transformO.GetChild(index).transform.position);
-        index++;
-        //agent.SetDestination(new Vector3(Random.Range(x - 10, x + 10), 0, Random.Range(z - 10, z + 10)));
+        int child = transform.GetChild(0).childCount;
+        waypoints = new Transform[child];
+        for (int i = 0; i < child; i++)
+        {
+            waypoints[i] = transform.GetChild(0).GetChild(i);
+        }
+        waypoints[0].transform.parent.parent = null;
+        waypoints[0].transform.parent.name = waypoints[0].transform.parent.name + " / " + gameObject.name;
+
+        SetWaypoint();
     }
     private void Update()
     {
         if (agent.remainingDistance < 0.5f)
         {
-            //float x = transform.position.x;
-            //float z = transform.position.z;
-            //agent.SetDestination(new Vector3(Random.Range(x - 10, x + 10), 0, Random.Range(z - 10, z + 10)));
-
-            agent.SetDestination(transformO.GetChild(index).transform.position);
-            index++;
-            if (index == 2) index = 0;
-            else index = 1;
+            SetWaypoint();
         }
+    }
+
+    void SetWaypoint()
+    {
+        agent.SetDestination(waypoints[index].position);
+        index++;
+        if (index == waypoints.Length) index = 0;
     }
 }
