@@ -22,6 +22,7 @@ public class NonPlayer : MonoBehaviour
 
         SetWaypoint();
     }
+    
     private void Update()
     {
         if (agent.remainingDistance < 0.5f)

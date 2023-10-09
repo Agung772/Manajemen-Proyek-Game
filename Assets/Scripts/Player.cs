@@ -13,6 +13,14 @@ public class Player : MonoBehaviour
 
     [SerializeField] CharacterController charController;
     UIGameplay uiGameplay;
+
+    [Header("Animation")]
+    [SerializeField] Animator animator;
+
+    [Header("Effect")]
+    [SerializeField] TrailRenderer trail;
+    [SerializeField] ParticleSystem particle;
+
     private void Awake()
     {
         instance = this;
@@ -37,10 +45,35 @@ public class Player : MonoBehaviour
 
         Vector3 v3 = charController.transform.forward;
 
-        charController.Move(v3 * m_speedMove * Time.deltaTime);
+        charController.Move(v3 * m_speedMove / 3.6f * Time.deltaTime);
         charController.transform.Rotate(Vector3.up * inputX * speedRot * Time.deltaTime);
-    }
 
+        //Animation
+        if (inputX > 0) PlayAnimation("Right");
+        else if (inputX < 0) PlayAnimation("Left");
+        else PlayAnimation("Forward");
+
+        //Trail
+        var inputminmax07 = (inputX > 0.7f || inputX < -0.7f);
+        if (inputminmax07 && speedKMH > 10 && rem 
+            || speedKMH > 15 && rem 
+            || inputminmax07 && speedKMH < 2)
+        {
+            trail.emitting = true;
+            var emission = particle.emission;
+            emission.rateOverTime = 40;
+        }
+        else 
+        {
+            trail.emitting = false;
+            var emission = particle.emission;
+            emission.rateOverTime = 0;
+        }
+    }
+    void PlayAnimation(string value)
+    {
+        animator.Play(value);
+    }
 
     void AkselerasiSpeed()
     {
@@ -71,12 +104,14 @@ public class Player : MonoBehaviour
         }
     }
 
+    [Header("Speedometer")]
     public float maxSpeedometer;
     public float minAngleArrow;
     public float maxAngleArrow;
+    float speedKMH;
     void SpeedometerUI()
     {
-        float speedKMH = charController.velocity.magnitude * 3.6f;
+        speedKMH = charController.velocity.magnitude * 3.6f;
 
         uiGameplay.speedText.text = ((int)speedKMH) + " km/h";
         uiGameplay.arrowRectT.localEulerAngles =
