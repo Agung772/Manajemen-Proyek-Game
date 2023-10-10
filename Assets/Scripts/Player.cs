@@ -104,6 +104,17 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void StartRem(float value)
+    {
+        StartCoroutine(Coroutine());
+        IEnumerator Coroutine()
+        {
+            Rem(true);
+            yield return new WaitForSeconds(1);
+            Rem(false);
+        }
+    }
+
     [Header("Speedometer")]
     public float maxSpeedometer;
     public float minAngleArrow;
