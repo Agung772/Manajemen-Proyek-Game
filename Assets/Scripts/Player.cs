@@ -21,8 +21,17 @@ public class Player : MonoBehaviour
     [SerializeField] TrailRenderer trail;
     [SerializeField] ParticleSystem particle;
 
-    [Header("Effect")]
+    [Header("Jarak")]
     public float jarakTempuh;
+
+    [Header("Speedometer")]
+    public float maxSpeedometer;
+    public float minAngleArrow;
+    public float maxAngleArrow;
+    float speedKMH;
+
+    [Header("Baterai")]
+    public float baterai;
     private void Awake()
     {
         instance = this;
@@ -58,6 +67,7 @@ public class Player : MonoBehaviour
         else if (inputX < 0) PlayAnimation("Left");
         else PlayAnimation("Forward");
 
+        if (tanpaTrail) return;
         //Trail
         var inputminmax07 = (inputX > 0.7f || inputX < -0.7f);
         if (inputminmax07 && speedKMH > 10 && rem 
@@ -109,22 +119,21 @@ public class Player : MonoBehaviour
         }
     }
 
+    bool tanpaTrail;
     public void StartRem(float value)
     {
         StartCoroutine(Coroutine());
         IEnumerator Coroutine()
         {
+            tanpaTrail = true;
             Rem(true);
             yield return new WaitForSeconds(1);
+            tanpaTrail = false;
             Rem(false);
         }
     }
 
-    [Header("Speedometer")]
-    public float maxSpeedometer;
-    public float minAngleArrow;
-    public float maxAngleArrow;
-    float speedKMH;
+
     void SpeedometerUI()
     {
         speedKMH = charController.velocity.magnitude * 3.6f;
@@ -136,8 +145,8 @@ public class Player : MonoBehaviour
 
     void JarakTempuh()
     {
-        jarakTempuh += charController.velocity.magnitude * Time.deltaTime;
-        uiGameplay.jarakTempuhText.text = "Total : " + jarakTempuh.ToString("F0") + " km";
+        jarakTempuh += charController.velocity.magnitude * Time.deltaTime / 1000;
+        uiGameplay.jarakTempuhText.text = "Total : " + jarakTempuh.ToString("F1") + " km";
         SaveData.instance.gameData.jarakTempuh = jarakTempuh;
     }
 

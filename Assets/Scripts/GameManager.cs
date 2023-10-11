@@ -45,4 +45,10 @@ public class GameManager : MonoBehaviour
         SaveData.instance.Save();
         AchievementManager.instance.Save();
     }
+
+    private void OnApplicationPause()
+    {
+        SaveData.instance.Save();
+        AchievementManager.instance.Save();
+    }
 }

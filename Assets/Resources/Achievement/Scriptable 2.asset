@@ -12,7 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2db2c4f2b639db1448a56540826b1cf1, type: 3}
   m_Name: Scriptable 2
   m_EditorClassIdentifier: 
-  selesai: 0
-  namaAchievement: Capai kecepatan 10 km/h
-  value: 0
-  maxValue: 10
+  namaAchievement: Capai kecepatan 50 km/h
+  maxValue: 50

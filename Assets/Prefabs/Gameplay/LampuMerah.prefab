@@ -217,7 +217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 133bc5e8e83a7b1429ef60fceaa76a25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 4
+  delay: 5
   dasarColor: {r: 0.3679245, g: 0.3679245, b: 0.3679245, a: 1}
   hijauColor: {r: 0.036642313, g: 1, b: 0, a: 1}
   kuningColor: {r: 1, g: 0.849145, b: 0, a: 1}

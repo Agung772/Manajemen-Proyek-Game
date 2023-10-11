@@ -19,7 +19,16 @@ public class LampuMerah : MonoBehaviour
 
     private void OnEnable()
     {
-        StartSistem();
+
+        StartCoroutine(Coroutine());
+        IEnumerator Coroutine()
+        {
+            hijauSprite.color = hijauColor;
+            kuningSprite.color = dasarColor;
+            merahSprite.color = dasarColor;
+            yield return new WaitForSeconds(delay);
+            StartSistem();
+        }
     }
 
 
@@ -29,12 +38,11 @@ public class LampuMerah : MonoBehaviour
         IEnumerator Coroutine()
         {
             merah = true;
-
             hijauSprite.color = dasarColor;
             kuningSprite.color = dasarColor;
             merahSprite.color = merahColor;
 
-            yield return new WaitForSeconds(delay);
+            yield return new WaitForSeconds(4);
             hijauSprite.color = dasarColor;
             kuningSprite.color = kuningColor;
             merahSprite.color = merahColor;
@@ -46,7 +54,7 @@ public class LampuMerah : MonoBehaviour
             kuningSprite.color = dasarColor;
             merahSprite.color = dasarColor;
 
-            yield return new WaitForSeconds(delay);
+            yield return new WaitForSeconds(4);
 
             hijauSprite.color = dasarColor;
             kuningSprite.color = kuningColor;
