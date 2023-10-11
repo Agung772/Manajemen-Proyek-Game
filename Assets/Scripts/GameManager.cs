@@ -39,4 +39,10 @@ public class GameManager : MonoBehaviour
 
         }
     }
+
+    private void OnApplicationQuit()
+    {
+        SaveData.instance.Save();
+        AchievementManager.instance.Save();
+    }
 }

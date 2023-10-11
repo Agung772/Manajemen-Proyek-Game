@@ -21,6 +21,8 @@ public class Player : MonoBehaviour
     [SerializeField] TrailRenderer trail;
     [SerializeField] ParticleSystem particle;
 
+    [Header("Effect")]
+    public float jarakTempuh;
     private void Awake()
     {
         instance = this;
@@ -28,6 +30,8 @@ public class Player : MonoBehaviour
     private void Start()
     {
         uiGameplay = UIGameplay.instance;
+
+        jarakTempuh = SaveData.instance.gameData.jarakTempuh;
     }
 
 
@@ -37,6 +41,7 @@ public class Player : MonoBehaviour
         AkselerasiSpeed();
         RemPC();
         SpeedometerUI();
+        JarakTempuh();
     }
 
     void Move()
@@ -127,6 +132,13 @@ public class Player : MonoBehaviour
         uiGameplay.speedText.text = ((int)speedKMH) + " km/h";
         uiGameplay.arrowRectT.localEulerAngles =
                 new Vector3(0, 0, Mathf.Lerp(minAngleArrow, maxAngleArrow, speedKMH / maxSpeedometer));
+    }
+
+    void JarakTempuh()
+    {
+        jarakTempuh += charController.velocity.magnitude * Time.deltaTime;
+        uiGameplay.jarakTempuhText.text = "Total : " + jarakTempuh.ToString("F0") + " km";
+        SaveData.instance.gameData.jarakTempuh = jarakTempuh;
     }
 
     private void OnCollisionEnter(Collision collision)

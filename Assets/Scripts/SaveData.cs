@@ -7,18 +7,6 @@ public class SaveData : MonoBehaviour
     public static SaveData instance;
 
     public GameData gameData;
-
-    private void Update()
-    {
-        if (Input.GetKeyUp(KeyCode.S))
-        {
-            Save();
-        }
-        if (Input.GetKeyUp(KeyCode.L))
-        {
-            Load();
-        }
-    }
     public void Save()
     {
         string filePath = Application.persistentDataPath + "/GameData.jhon";
@@ -26,8 +14,7 @@ public class SaveData : MonoBehaviour
         System.IO.File.WriteAllText(filePath, data);
 
 
-        print(filePath);
-        print(Application.dataPath);
+        print("Data berhasil di simpan di : " + filePath);
 
     }
 
@@ -45,6 +32,5 @@ public class GameData
 {
     public float score;
 
-    public float volumeBGM;
-    public float volumeSFX;
+    public float jarakTempuh;
 }

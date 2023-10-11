@@ -52,6 +52,7 @@ MonoBehaviour:
   uiManager: {fileID: 2959955713913145697}
   saveData: {fileID: 8265687021662803630}
   audioManager: {fileID: 917885166913541937}
+  achievementManager: {fileID: 2713492369501862621}
   sprites: []
 --- !u!114 &2959955713913145697
 MonoBehaviour:
@@ -1129,8 +1130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameData:
     score: 0
-    volumeBGM: 0
-    volumeSFX: 0
+    jarakTempuh: 0
 --- !u!1 &6332635278893081782
 GameObject:
   m_ObjectHideFlags: 0

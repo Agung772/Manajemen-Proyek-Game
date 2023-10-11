@@ -37,8 +37,6 @@ public class AchievementPrefab : MonoBehaviour
             SetChild();
         }
 
-        Save();
-
         void SetChild()
         {
             if (achievementData.selesai)
@@ -57,14 +55,14 @@ public class AchievementPrefab : MonoBehaviour
 
     public void Save()
     {
-        string filePath = Application.persistentDataPath + "/AchievementData/" + achievement.GetInstanceID() + ".jhon";
+        string filePath = Application.persistentDataPath + "/AchievementData/" + achievement.name + ".jhon";
         string data = JsonUtility.ToJson(achievementData);
         System.IO.File.WriteAllText(filePath, data);
     }
 
     public void Load()
     {
-        string filePath = Application.persistentDataPath + "/AchievementData/" + achievement.GetInstanceID() + ".jhon";
+        string filePath = Application.persistentDataPath + "/AchievementData/" + achievement.name + ".jhon";
         if (System.IO.File.Exists(filePath))
         {
             string data = System.IO.File.ReadAllText(filePath);

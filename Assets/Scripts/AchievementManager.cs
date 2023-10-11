@@ -50,6 +50,13 @@ public class AchievementManager : MonoBehaviour
         }
     }
 
+    public void Save()
+    {
+        for (int i = 0; i < achievementUI.achievementPrefabs.Length; i++)
+        {
+            achievementUI.achievementPrefabs[i].Save();
+        }
+    }
 
 }
 

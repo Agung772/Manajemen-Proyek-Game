@@ -10,9 +10,11 @@ public class UIGameplay : MonoBehaviour
 
     public TextMeshProUGUI gameTimeText;
 
-    //
+    [Header("SpeedometerUI")]
     public TextMeshProUGUI speedText;
     public RectTransform arrowRectT;
+
+    public TextMeshProUGUI jarakTempuhText;
     private void Awake()
     {
         instance = this;
