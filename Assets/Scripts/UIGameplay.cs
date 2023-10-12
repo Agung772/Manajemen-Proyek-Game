@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class UIGameplay : MonoBehaviour
@@ -12,6 +13,7 @@ public class UIGameplay : MonoBehaviour
 
     [Header("SpeedometerUI")]
     public TextMeshProUGUI speedText;
+    public Image indikatorImage;
 
     public TextMeshProUGUI jarakTempuhText;
     private void Awake()

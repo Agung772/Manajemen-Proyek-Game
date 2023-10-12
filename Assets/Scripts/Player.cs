@@ -137,8 +137,8 @@ public class Player : MonoBehaviour
     void SpeedometerUI()
     {
         speedKMH = charController.velocity.magnitude * 3.6f;
-
         uiGameplay.speedText.text = speedKMH.ToString("F0");
+        uiGameplay.indikatorImage.fillAmount = speedKMH / speedMove;
     }
 
     void JarakTempuh()
