@@ -12,7 +12,6 @@ public class UIGameplay : MonoBehaviour
 
     [Header("SpeedometerUI")]
     public TextMeshProUGUI speedText;
-    public RectTransform arrowRectT;
 
     public TextMeshProUGUI jarakTempuhText;
     private void Awake()

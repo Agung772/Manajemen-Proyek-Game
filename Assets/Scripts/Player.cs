@@ -138,15 +138,13 @@ public class Player : MonoBehaviour
     {
         speedKMH = charController.velocity.magnitude * 3.6f;
 
-        uiGameplay.speedText.text = ((int)speedKMH) + " km/h";
-        uiGameplay.arrowRectT.localEulerAngles =
-                new Vector3(0, 0, Mathf.Lerp(minAngleArrow, maxAngleArrow, speedKMH / maxSpeedometer));
+        uiGameplay.speedText.text = speedKMH.ToString("F0");
     }
 
     void JarakTempuh()
     {
         jarakTempuh += charController.velocity.magnitude * Time.deltaTime / 1000;
-        uiGameplay.jarakTempuhText.text = "Total : " + jarakTempuh.ToString("F1") + " km";
+        uiGameplay.jarakTempuhText.text = jarakTempuh.ToString("F1") + " km";
         SaveData.instance.gameData.jarakTempuh = jarakTempuh;
     }
 

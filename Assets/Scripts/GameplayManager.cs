@@ -30,6 +30,6 @@ public class GameplayManager : MonoBehaviour
 
         float menit = Mathf.FloorToInt(gameTime / 60);
         float detik = Mathf.FloorToInt(gameTime % 60);
-        uiGameplay.gameTimeText.text = "Waktu : " + string.Format("{0:00}:{1:00}", menit, detik);
+        uiGameplay.gameTimeText.text = string.Format("{0:00}:{1:00}", menit, detik);
     }
 }
