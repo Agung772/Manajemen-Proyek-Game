@@ -15,7 +15,9 @@ public class UIManager : MonoBehaviour
         StartCoroutine(SceneCoroutine());
         IEnumerator SceneCoroutine()
         {
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(1);
+
+            if (value == "Quit") { Application.Quit();}
 
             var loadScene = SceneManager.LoadSceneAsync(value);
             loadScene.allowSceneActivation = false;
@@ -25,10 +27,9 @@ public class UIManager : MonoBehaviour
                 float loading = loadScene.progress / 0.9f;
                 //loadingBar.fillAmount = loading;
                 //loadingText.text = (loading * 100).ToString("F0") + "%";
-
                 if (loading >= 1)
                 {
-                    yield return new WaitForSeconds(4);
+                    yield return new WaitForSeconds(1);
                     loadScene.allowSceneActivation = true;
                     //loadingScreenUI.GetComponent<Animator>().SetTrigger("Exit");
                     cdPindahScene = false;

@@ -781,7 +781,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1deb9f8afbd925c4aa0cf57824cb600d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedMove: 70
+  speedMove: 80
   m_speedMove: 0
   speedRot: 60
   charController: {fileID: 506257350}
