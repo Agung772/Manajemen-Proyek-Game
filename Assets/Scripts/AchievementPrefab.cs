@@ -13,7 +13,6 @@ public class AchievementPrefab : MonoBehaviour
     public Sprite bgBelumSelesai;
 
     public Image bgImage;
-    public Image logoImage;
     public TextMeshProUGUI titleText;
     public TextMeshProUGUI valueText;
 
@@ -42,11 +41,15 @@ public class AchievementPrefab : MonoBehaviour
             if (achievementData.selesai)
             {
                 bgImage.sprite = bgSelesai;
+                titleText.color = Color.white;
+                valueText.color = Color.white;
                 transform.SetAsFirstSibling();
             }
             else
             {
                 bgImage.sprite = bgBelumSelesai;
+                titleText.color = Color.black;
+                valueText.color = Color.black;
                 transform.SetAsLastSibling();
             }
         }
