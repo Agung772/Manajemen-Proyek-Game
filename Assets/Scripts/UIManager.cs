@@ -7,7 +7,15 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
 
+    [Header("Achievement")]
+    [SerializeField] GameObject achievementUI;
+
+    [SerializeField] Transform parentSpawnAct;
+    [SerializeField] GameObject NotifAct;
+
     bool cdPindahScene;
+
+
     public void PindahScene(string value)
     {
         if (cdPindahScene) return;
@@ -40,5 +48,24 @@ public class UIManager : MonoBehaviour
                 yield return null;
             }
         }
+    }
+    public void SetAchievementUI(bool value)
+    {
+        if (value)
+        {
+            Time.timeScale = 0;
+            achievementUI.SetActive(true);
+        }
+        else
+        {
+            Time.timeScale = 1;
+            achievementUI.SetActive(false);
+        }
+
+    }
+    public void SpawnNotifAct(string body)
+    {
+        NotifAct sc = Instantiate(NotifAct, parentSpawnAct).GetComponent<NotifAct>();
+        sc.Set(body);
     }
 }

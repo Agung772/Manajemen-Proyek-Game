@@ -39,6 +39,21 @@ public class GameManager : MonoBehaviour
 
         }
     }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            achievementManager.AddValue("Tabrak jalan berlubang", 1);
+        }
+        if (Input.GetKeyDown(KeyCode.Y))
+        {
+            achievementManager.AddValue("Capai kecepatan 50 km/h", 1);
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            uiManager.SetAchievementUI(true);
+        }
+    }
 
     private void OnApplicationQuit()
     {

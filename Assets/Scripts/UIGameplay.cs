@@ -24,4 +24,9 @@ public class UIGameplay : MonoBehaviour
     {
         Player.instance.Rem(value);
     }
+
+    public void SetAchievementUI(bool value)
+    {
+        UIManager.instance.SetAchievementUI(value);
+    }
 }

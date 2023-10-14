@@ -49,10 +49,13 @@ public class Player : MonoBehaviour
         Move();
         AkselerasiSpeed();
         RemPC();
-        SpeedometerUI();
+
         JarakTempuh();
     }
-
+    private void FixedUpdate()
+    {
+        SpeedometerUI();
+    }
     void Move()
     {
         float inputX = SimpleInput.GetAxis("Horizontal");

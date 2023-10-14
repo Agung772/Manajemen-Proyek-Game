@@ -15,4 +15,8 @@ public class MainmenuUI : MonoBehaviour
     {
         uiManager.PindahScene(value);
     }
+    public void SetAchievementUI(bool value)
+    {
+        UIManager.instance.SetAchievementUI(value);
+    }
 }

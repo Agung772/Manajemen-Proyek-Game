@@ -15,21 +15,7 @@ public class AchievementManager : MonoBehaviour
 
         achievementUI.Add(achievements);
     }
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            AddValue("Tabrak jalan berlubang", 1);
-        }        
-        if (Input.GetKeyDown(KeyCode.Y))
-        {
-            AddValue("Capai kecepatan 60 km/h", 1);
-        }
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            achievementUI.gameObject.SetActive(true);
-        }
-    }
+
     public void AddValue(string achievement, int value)
     {
         for (int i = 0; i < achievementUI.achievementPrefabs.Length; i++)

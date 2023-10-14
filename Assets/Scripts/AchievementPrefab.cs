@@ -33,6 +33,9 @@ public class AchievementPrefab : MonoBehaviour
         if (!achievementData.selesai && achievementData.value >= achievement.maxValue)
         {
             achievementData.selesai = true;
+
+            UIManager.instance.SpawnNotifAct(achievement.namaAchievement);
+
             SetChild();
         }
 
@@ -41,15 +44,15 @@ public class AchievementPrefab : MonoBehaviour
             if (achievementData.selesai)
             {
                 bgImage.sprite = bgSelesai;
-                titleText.color = Color.white;
-                valueText.color = Color.white;
+                titleText.color = Color.black;
+                valueText.color = Color.black;
                 transform.SetAsFirstSibling();
             }
             else
             {
                 bgImage.sprite = bgBelumSelesai;
-                titleText.color = Color.black;
-                valueText.color = Color.black;
+                titleText.color = Color.white;
+                valueText.color = Color.white;
                 transform.SetAsLastSibling();
             }
         }

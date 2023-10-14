@@ -326,8 +326,8 @@ MonoBehaviour:
   achievementData:
     selesai: 0
     value: 0
-  bgSelesai: {fileID: 21300000, guid: 4ea36cf7ae9eaf346b3df887ce85116a, type: 3}
-  bgBelumSelesai: {fileID: 21300000, guid: afd38da9de988e14b88efcca8ff59e82, type: 3}
+  bgSelesai: {fileID: 21300000, guid: afd38da9de988e14b88efcca8ff59e82, type: 3}
+  bgBelumSelesai: {fileID: 21300000, guid: 4ea36cf7ae9eaf346b3df887ce85116a, type: 3}
   bgImage: {fileID: 8071495415055057605}
   titleText: {fileID: 1508794882978122677}
   valueText: {fileID: 5832319683675449413}
