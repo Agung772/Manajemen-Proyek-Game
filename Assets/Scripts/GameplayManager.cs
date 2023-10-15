@@ -32,4 +32,12 @@ public class GameplayManager : MonoBehaviour
         float detik = Mathf.FloorToInt(gameTime % 60);
         uiGameplay.gameTimeText.text = string.Format("{0:00}:{1:00}", menit, detik);
     }
+
+
+    public void SetKlakson(bool value)
+    {
+        AudioManager.instance.SetLoopSfx(AudioManager.instance.remSfx.name, value);
+    }
+
+
 }
