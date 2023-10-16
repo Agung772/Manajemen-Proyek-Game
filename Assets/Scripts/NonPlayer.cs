@@ -9,8 +9,14 @@ public class NonPlayer : MonoBehaviour
 
     [SerializeField] int index;
     [SerializeField] Transform[] waypoints;
+
+    float speed;
+    public RaycastHit hit;
     private void Start()
     {
+        speed = Random.RandomRange(4, 6);
+        agent.speed = speed;
+
         int child = transform.GetChild(0).childCount;
         waypoints = new Transform[child];
         for (int i = 0; i < child; i++)
@@ -28,6 +34,34 @@ public class NonPlayer : MonoBehaviour
         if (agent.remainingDistance < 0.5f)
         {
             SetWaypoint();
+        }
+
+        var ray = new Ray(transform.position, transform.forward);
+        if (Physics.Raycast(ray, out hit, 5))
+        {
+            if (hit.collider.GetComponent<Player>())
+            {
+
+            }
+            if (hit.collider.GetComponent<LampuMerah>())
+            {
+                if (hit.collider.GetComponent<LampuMerah>().merah)
+                {
+                    agent.speed = 0;
+                }
+                else
+                {
+                    agent.speed = speed;
+                }
+            }
+            if (hit.collider.GetComponent<NonPlayer>())
+            {
+                agent.speed = 0;
+            }
+        }
+        else
+        {
+            agent.speed = speed;
         }
     }
 

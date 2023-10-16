@@ -31,6 +31,7 @@ public class Player : MonoBehaviour
     float speedKMH;
 
     [Header("Baterai")]
+    public float maxKMBaterai;
     public float baterai;
     private void Awake()
     {
@@ -41,6 +42,8 @@ public class Player : MonoBehaviour
         uiGameplay = UIGameplay.instance;
 
         jarakTempuh = SaveData.instance.gameData.jarakTempuh;
+
+        baterai = maxKMBaterai;
     }
 
 
@@ -51,6 +54,7 @@ public class Player : MonoBehaviour
         RemPC();
 
         JarakTempuh();
+        BateraiUI();
     }
     private void FixedUpdate()
     {
@@ -150,11 +154,21 @@ public class Player : MonoBehaviour
         uiGameplay.jarakTempuhText.text = jarakTempuh.ToString("F1") + " km";
         SaveData.instance.gameData.jarakTempuh = jarakTempuh;
     }
-
+    void BateraiUI()
+    {
+        //Rata rata max 50km
+        baterai -= charController.velocity.magnitude * Time.deltaTime / 1000;
+        uiGameplay.bateraiImage.fillAmount = baterai / maxKMBaterai;
+    }
     private void OnCollisionEnter(Collision collision)
     {
-
+        Rem(true);
     }
 
-    
+    private void OnCollisionExit(Collision collision)
+    {
+        Rem(false);
+    }
+
+
 }

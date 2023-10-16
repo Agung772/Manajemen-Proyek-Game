@@ -6,7 +6,7 @@ public class LampuMerah : MonoBehaviour
 {
     [SerializeField] float delay;
 
-    bool merah;
+    public bool merah;
 
     [SerializeField] Color dasarColor;
     [SerializeField] Color hijauColor;

@@ -18,6 +18,8 @@ public class UIManager : MonoBehaviour
 
     public void PindahScene(string value)
     {
+        Time.timeScale = 1;
+
         if (cdPindahScene) return;
         cdPindahScene = true;
         StartCoroutine(SceneCoroutine());

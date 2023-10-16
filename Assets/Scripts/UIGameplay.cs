@@ -14,8 +14,11 @@ public class UIGameplay : MonoBehaviour
     [Header("SpeedometerUI")]
     public TextMeshProUGUI speedText;
     public Image indikatorImage;
+    public Image bateraiImage;
 
     public TextMeshProUGUI jarakTempuhText;
+
+    public GameObject pauseUI;
     private void Awake()
     {
         instance = this;
@@ -28,5 +31,25 @@ public class UIGameplay : MonoBehaviour
     public void SetAchievementUI(bool value)
     {
         UIManager.instance.SetAchievementUI(value);
+    }
+
+    public void PindahScene(string value)
+    {
+        UIManager.instance.PindahScene(value);
+    }
+
+    public void Pause(bool value)
+    {
+        if (value)
+        {
+            Time.timeScale = 0;
+            pauseUI.SetActive(true);
+        }
+        else
+        {
+            Time.timeScale = 1;
+            pauseUI.SetActive(false);
+        }
+
     }
 }
