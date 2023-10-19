@@ -41,7 +41,7 @@ public class NonPlayer : MonoBehaviour
         {
             if (hit.collider.GetComponent<Player>())
             {
-
+                agent.speed = 0;
             }
             if (hit.collider.GetComponent<LampuMerah>())
             {
