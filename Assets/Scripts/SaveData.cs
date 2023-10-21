@@ -33,4 +33,11 @@ public class GameData
     public float score;
 
     public float jarakTempuh;
+
+    public int codeSkinPlayer = 1;
+    public int level = 1;
+
+    public float gameTimaLevel1;
+    public float gameTimaLevel2;
+    public float gameTimaLevel3;
 }

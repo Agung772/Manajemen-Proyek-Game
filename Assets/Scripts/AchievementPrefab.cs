@@ -61,6 +61,12 @@ public class AchievementPrefab : MonoBehaviour
 
     public void Save()
     {
+        string createFolder = Application.persistentDataPath + "/AchievementData";
+        if (!System.IO.File.Exists(createFolder))
+        {
+            System.IO.Directory.CreateDirectory(createFolder);
+        }
+
         string filePath = Application.persistentDataPath + "/AchievementData/" + achievement.name + ".jhon";
         string data = JsonUtility.ToJson(achievementData);
         System.IO.File.WriteAllText(filePath, data);

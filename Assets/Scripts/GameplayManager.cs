@@ -34,10 +34,13 @@ public class GameplayManager : MonoBehaviour
     }
 
 
-    public void SetKlakson(bool value)
+    public void SetKlakson()
     {
-        AudioManager.instance.SetLoopSfx(AudioManager.instance.remSfx.name, value);
+        Player.instance.SetKlakson();
     }
-
+    public void RemPlayer(bool value)
+    {
+        Player.instance.Rem(value);
+    }
 
 }

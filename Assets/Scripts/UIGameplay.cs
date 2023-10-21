@@ -23,10 +23,6 @@ public class UIGameplay : MonoBehaviour
     {
         instance = this;
     }
-    public void RemPlayer(bool value)
-    {
-        Player.instance.Rem(value);
-    }
 
     public void SetAchievementUI(bool value)
     {
@@ -36,6 +32,8 @@ public class UIGameplay : MonoBehaviour
     public void PindahScene(string value)
     {
         UIManager.instance.PindahScene(value);
+
+        AudioManager.instance.SetSFX(AudioManager.instance.buttonActSfx.name);
     }
 
     public void Pause(bool value)
@@ -51,5 +49,6 @@ public class UIGameplay : MonoBehaviour
             pauseUI.SetActive(false);
         }
 
+        AudioManager.instance.SetSFX(AudioManager.instance.buttonActSfx.name);
     }
 }

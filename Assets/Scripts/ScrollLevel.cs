@@ -13,7 +13,6 @@ public class ScrollLevel : MonoBehaviour
     {
         pos = new float[transform.childCount];
         float distance = 1f / (pos.Length - 1f);
-        print(distance);
         for (int i = 0; i < pos.Length; i++)
         {
             pos[i] = distance * i;
@@ -40,6 +39,7 @@ public class ScrollLevel : MonoBehaviour
             {
                 transform.GetChild(i).localScale = Vector2.Lerp(transform.GetChild(i).localScale, new Vector2(1, 1), 0.1f);
                 transform.GetChild(i).GetComponent<Image>().color = Color.white;
+                PilihLevelUI.instance.level = i + 1;
                 for (int j = 0; j < pos.Length; j++)
                 {
                     if (j != i)

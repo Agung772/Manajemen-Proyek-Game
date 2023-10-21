@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
 
     [Header("Animation")]
     [SerializeField] Animator animator;
+    [SerializeField] AnimatorPlayer animatorPlayer;
 
     [Header("Effect")]
     [SerializeField] TrailRenderer trail;
@@ -44,6 +45,8 @@ public class Player : MonoBehaviour
         jarakTempuh = SaveData.instance.gameData.jarakTempuh;
 
         baterai = maxKMBaterai;
+
+        SetAnimator();
     }
 
 
@@ -59,6 +62,11 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         SpeedometerUI();
+    }
+
+    void SetAnimator()
+    {
+        animatorPlayer.SetAnimator(SaveData.instance.gameData.codeSkinPlayer);
     }
     void Move()
     {
@@ -113,16 +121,18 @@ public class Player : MonoBehaviour
     public void Rem(bool value)
     {
         rem = value;
+
+        AudioManager.instance.SetLoopSfx(AudioManager.instance.remSfx.name, value);
     }
     public void RemPC()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            rem = true;
+            Rem(true);
         }
         if (Input.GetKeyUp(KeyCode.Space))
         {
-            rem = false;
+            Rem(false);
         }
     }
 
@@ -140,7 +150,10 @@ public class Player : MonoBehaviour
         }
     }
 
-
+    public void SetKlakson()
+    {
+        AudioManager.instance.SetSFX(AudioManager.instance.klaksonSfx.name);
+    }
     void SpeedometerUI()
     {
         speedKMH = charController.velocity.magnitude * 3.6f;

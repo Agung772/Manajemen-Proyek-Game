@@ -13,6 +13,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] Transform parentSpawnAct;
     [SerializeField] GameObject NotifAct;
 
+    [Header("Transisi")]
+    [SerializeField] Animator transisiAnimator;
     bool cdPindahScene;
 
 
@@ -25,9 +27,10 @@ public class UIManager : MonoBehaviour
         StartCoroutine(SceneCoroutine());
         IEnumerator SceneCoroutine()
         {
-            yield return new WaitForSeconds(1);
+            transisiAnimator.gameObject.SetActive(true);
+            transisiAnimator.Play("Start");
 
-            if (value == "Quit") { Application.Quit();}
+            yield return new WaitForSeconds(0.5f);
 
             var loadScene = SceneManager.LoadSceneAsync(value);
             loadScene.allowSceneActivation = false;
@@ -35,20 +38,40 @@ public class UIManager : MonoBehaviour
             while (!loadScene.isDone)
             {
                 float loading = loadScene.progress / 0.9f;
+
                 //loadingBar.fillAmount = loading;
                 //loadingText.text = (loading * 100).ToString("F0") + "%";
                 if (loading >= 1)
                 {
-                    yield return new WaitForSeconds(1);
+                    yield return new WaitForSeconds(0.5f);
                     loadScene.allowSceneActivation = true;
-                    //loadingScreenUI.GetComponent<Animator>().SetTrigger("Exit");
+
+                    transisiAnimator.Play("Exit");
+
                     cdPindahScene = false;
                     print("Selesai pindah scene");
 
-
+                    yield return new WaitForSeconds(0.5f);
+                    transisiAnimator.gameObject.SetActive(false);
                 }
                 yield return null;
             }
+        }
+    }
+
+    public void QuitGame()
+    {
+        if (cdPindahScene) return;
+        cdPindahScene = true;
+        Time.timeScale = 1;
+        StartCoroutine(Coroutine());
+        IEnumerator Coroutine()
+        {
+            transisiAnimator.gameObject.SetActive(true);
+            transisiAnimator.Play("Start");
+            yield return new WaitForSeconds(0.5f);
+            Application.Quit();
+
         }
     }
     public void SetAchievementUI(bool value)
@@ -64,6 +87,7 @@ public class UIManager : MonoBehaviour
             achievementUI.SetActive(false);
         }
 
+        AudioManager.instance.SetSFX(AudioManager.instance.buttonActSfx.name);
     }
     public void SpawnNotifAct(string body)
     {
