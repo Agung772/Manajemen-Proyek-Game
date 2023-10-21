@@ -13,7 +13,6 @@ public class CameraFollow : MonoBehaviour
     {
         offset = transform.localPosition;
         transform.parent = null;
-
         offsetY = 22;
     }
     Quaternion angleCamQt;
@@ -30,28 +29,24 @@ public class CameraFollow : MonoBehaviour
             condition = "Right";
             offset = new Vector3(-8, offsetY, 0);
             angleCamQt = Quaternion.Euler(65, 90, 0);
-            MapManager.instance.AngleMap("Right");
         }
         else if (angle > 165 && angle < 195 && condition != "Back")
         {
             condition = "Back";
             offset = new Vector3(0, offsetY, 8);
             angleCamQt = Quaternion.Euler(65, 180, 0);
-            MapManager.instance.AngleMap("Back");
         }
         else if (angle > 255 && angle < 285 && condition != "Left")
         {
             condition = "Left";
             offset = new Vector3(8, offsetY, 0);
             angleCamQt = Quaternion.Euler(65, 270, 0);
-            MapManager.instance.AngleMap("Left");
         }
         else if ((angle > 345 || angle < 15) && condition != "Forward")
         {
             condition = "Forward";
             offset = new Vector3(0, offsetY, -8);
             angleCamQt = Quaternion.Euler(65, 0, 0);
-            MapManager.instance.AngleMap("Forward");
         }
 
         transform.rotation = Quaternion.Lerp(transform.rotation, angleCamQt, 2 * Time.deltaTime);

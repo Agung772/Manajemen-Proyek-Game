@@ -14,16 +14,4 @@ public class MapManager : MonoBehaviour
     {
         instance = this;
     }
-    public void AngleMap(string value)
-    {
-        mapAngleFrd.SetActive(false);
-        mapAngleBk.SetActive(false);
-        mapAngleLt.SetActive(false);
-        mapAngleRt.SetActive(false);
-
-        if (value == "Forward") mapAngleFrd.SetActive(true);
-        else if (value == "Back") mapAngleBk.SetActive(true);
-        else if (value == "Right") mapAngleRt.SetActive(true);
-        else if (value == "Left") mapAngleLt.SetActive(true);
-    }
 }
