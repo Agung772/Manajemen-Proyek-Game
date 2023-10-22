@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class Lobang : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    
+    private void Start()
     {
-        
-    }
+        float random = Random.Range(1, 1.5f);
+        transform.localScale = new Vector3(random, random, random);
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        float randomRot = Random.Range(0, 180);
+        transform.eulerAngles = new Vector3(0, randomRot, 0);
     }
 }

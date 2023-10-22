@@ -13,7 +13,7 @@ public class CameraFollow : MonoBehaviour
     {
         offset = transform.localPosition;
         transform.parent = null;
-        offsetY = 22;
+        offsetY = offset.y;
     }
     Quaternion angleCamQt;
     string condition;

@@ -10,16 +10,24 @@ public class NonPlayer : MonoBehaviour
     [SerializeField] int index;
     [SerializeField] Transform[] waypoints;
 
+    [SerializeField] SpriteRenderer primary;
+
     float speed;
     public RaycastHit hit;
 
+    bool detecPlayer;
     bool nonActive;
     float idleTime;
 
     private void Start()
     {
+        primary.color = new Color(
+            UnityEngine.Random.Range(0f, 1f),
+            UnityEngine.Random.Range(0f, 1f), 
+            UnityEngine.Random.Range(0f, 1f));
 
-        speed = UnityEngine.Random.RandomRange(4, 6);
+
+        speed = UnityEngine.Random.Range(4f, 6f);
         agent.speed = speed;
 
         int child = transform.GetChild(0).childCount;
@@ -57,7 +65,7 @@ public class NonPlayer : MonoBehaviour
         }
         AINonPlayer();
 
-        if (agent.speed == 0)
+        if (agent.speed == 0 && !detecPlayer)
         {
             idleTime += Time.deltaTime;
             if (idleTime > 5)
@@ -86,6 +94,7 @@ public class NonPlayer : MonoBehaviour
             if (hit.collider.GetComponent<Player>())
             {
                 agent.speed = 0;
+                detecPlayer = true;
             }
             if (hit.collider.GetComponent<LampuMerah>())
             {
@@ -106,8 +115,11 @@ public class NonPlayer : MonoBehaviour
         else
         {
             agent.speed = speed;
+            detecPlayer = false;
         }
     }
+
+
 
     void SetWaypoint()
     {

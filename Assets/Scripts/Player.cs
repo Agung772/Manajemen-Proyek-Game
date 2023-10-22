@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
 
     public float speedMove = 5;
     [ReadOnly] public float m_speedMove;
+    float y;
 
     public float speedRot = 100;
 
@@ -47,6 +48,8 @@ public class Player : MonoBehaviour
         baterai = maxKMBaterai;
 
         SetAnimator();
+
+        y = transform.position.y;
     }
 
 
@@ -58,6 +61,8 @@ public class Player : MonoBehaviour
 
         JarakTempuh();
         BateraiUI();
+
+        transform.position = new Vector3(transform.position.x, y, transform.position.z);
     }
     private void FixedUpdate()
     {
@@ -173,14 +178,12 @@ public class Player : MonoBehaviour
         baterai -= charController.velocity.magnitude * Time.deltaTime / 1000;
         uiGameplay.bateraiImage.fillAmount = baterai / maxKMBaterai;
     }
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionStay(Collision collision)
     {
-        Rem(true);
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        Rem(false);
+        if (collision.collider.GetComponent<Dinding>())
+        {
+            m_speedMove = 0;
+        }
     }
 
 
