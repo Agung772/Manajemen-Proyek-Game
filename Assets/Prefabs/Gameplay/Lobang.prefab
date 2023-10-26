@@ -93,8 +93,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7829917735794710012}
-  - component: {fileID: 1566816905688914354}
   - component: {fileID: 6409578121464332685}
+  - component: {fileID: 4518948604068935188}
+  - component: {fileID: 315258368384077312}
   m_Layer: 0
   m_Name: Lobang
   m_TagString: Untagged
@@ -118,18 +119,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1566816905688914354
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6305012052132519723}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fba90a578d480984f80b61172f133c8b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &6409578121464332685
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -145,9 +134,33 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1.958847, y: 1.3, z: 0.903353}
   m_Center: {x: 0.0050468445, y: 0, z: 0.010093093}
+--- !u!114 &4518948604068935188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6305012052132519723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c3e4b533fefd0444972c1d1931793e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &315258368384077312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6305012052132519723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fba90a578d480984f80b61172f133c8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

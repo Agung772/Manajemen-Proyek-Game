@@ -178,13 +178,5 @@ public class Player : MonoBehaviour
         baterai -= charController.velocity.magnitude * Time.deltaTime / 1000;
         uiGameplay.bateraiImage.fillAmount = baterai / maxKMBaterai;
     }
-    private void OnCollisionStay(Collision collision)
-    {
-        if (collision.collider.GetComponent<Dinding>())
-        {
-            m_speedMove = 0;
-        }
-    }
-
 
 }

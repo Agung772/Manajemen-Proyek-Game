@@ -10,7 +10,8 @@ public class GameplayManager : MonoBehaviour
 
 
     UIGameplay uiGameplay;
-
+    [Header("Charger")]
+    public GameObject chargerImage;
     private void Awake()
     {
         instance = this;
@@ -18,6 +19,7 @@ public class GameplayManager : MonoBehaviour
     private void Start()
     {
         uiGameplay = UIGameplay.instance;
+        SetChargerUI(false);
     }
     private void Update()
     {
@@ -42,5 +44,14 @@ public class GameplayManager : MonoBehaviour
     {
         Player.instance.Rem(value);
     }
-
+    public void SetChargerUI(bool value)
+    {
+        chargerImage.SetActive(value);
+        print(value);
+    }
+    public void SetCharger()
+    {
+        var player = Player.instance;
+        player.baterai = Mathf.MoveTowards(player.baterai, player.maxKMBaterai, 1 * Time.deltaTime);
+    }
 }

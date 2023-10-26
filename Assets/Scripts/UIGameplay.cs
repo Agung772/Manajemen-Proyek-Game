@@ -18,7 +18,10 @@ public class UIGameplay : MonoBehaviour
 
     public TextMeshProUGUI jarakTempuhText;
 
+    [Header("Pause")]
     public GameObject pauseUI;
+
+
     private void Awake()
     {
         instance = this;
@@ -51,4 +54,6 @@ public class UIGameplay : MonoBehaviour
 
         AudioManager.instance.SetSFX(AudioManager.instance.buttonActSfx.name);
     }
+
+
 }
