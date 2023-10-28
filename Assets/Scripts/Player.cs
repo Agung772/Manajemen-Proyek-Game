@@ -172,10 +172,18 @@ public class Player : MonoBehaviour
         uiGameplay.jarakTempuhText.text = jarakTempuh.ToString("F1") + " km";
         SaveData.instance.gameData.jarakTempuh = jarakTempuh;
     }
+    public bool bateraiCharger;
     void BateraiUI()
     {
         //Rata rata max 50km
-        baterai -= charController.velocity.magnitude * Time.deltaTime / 1000;
+        if (bateraiCharger)
+        {
+            baterai = Mathf.MoveTowards(baterai, maxKMBaterai, 0.2f * Time.deltaTime);
+        }
+        else
+        {
+            baterai -= charController.velocity.magnitude * Time.deltaTime / 1000;
+        }
         uiGameplay.bateraiImage.fillAmount = baterai / maxKMBaterai;
     }
 

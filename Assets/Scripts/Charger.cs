@@ -6,14 +6,14 @@ public class Charger : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<Player>())
+        if (other.CompareTag("Player"))
         {
             GameplayManager.instance.SetChargerUI(true);
         }
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.GetComponent<Player>())
+        if (other.CompareTag("Player"))
         {
             GameplayManager.instance.SetChargerUI(false);
         }

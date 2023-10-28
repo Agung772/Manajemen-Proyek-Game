@@ -21,10 +21,14 @@ public class NonPlayer : MonoBehaviour
 
     private void Start()
     {
-        primary.color = new Color(
-            UnityEngine.Random.Range(0f, 1f),
-            UnityEngine.Random.Range(0f, 1f), 
-            UnityEngine.Random.Range(0f, 1f));
+        if (primary != null)
+        {
+            primary.color = new Color(
+                UnityEngine.Random.Range(0f, 1f),
+                UnityEngine.Random.Range(0f, 1f),
+                UnityEngine.Random.Range(0f, 1f));
+        }
+
 
 
         speed = UnityEngine.Random.Range(4f, 6f);

@@ -8,7 +8,7 @@ public class NonCollider : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<Player>())
+        if (other.CompareTag("Player"))
         {
             StartCoroutine(Coroutine());
             IEnumerator Coroutine()

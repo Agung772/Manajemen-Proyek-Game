@@ -35,7 +35,10 @@ public class GameplayManager : MonoBehaviour
         uiGameplay.gameTimeText.text = string.Format("{0:00}:{1:00}", menit, detik);
     }
 
-
+    public void CallPolice()
+    {
+        Debug.LogWarning("KEJAR PLAYER");
+    }
     public void SetKlakson()
     {
         Player.instance.SetKlakson();
@@ -47,11 +50,9 @@ public class GameplayManager : MonoBehaviour
     public void SetChargerUI(bool value)
     {
         chargerImage.SetActive(value);
-        print(value);
     }
-    public void SetCharger()
+    public void SetCharger(bool value)
     {
-        var player = Player.instance;
-        player.baterai = Mathf.MoveTowards(player.baterai, player.maxKMBaterai, 1 * Time.deltaTime);
+        Player.instance.bateraiCharger = value;
     }
 }
