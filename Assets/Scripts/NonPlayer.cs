@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 using UnityEngine.AI;
 using System;
 public class NonPlayer : MonoBehaviour
 {
+    [SerializeField] string text;
+    [SerializeField] TextMeshProUGUI textNPC;
+
     [SerializeField] NavMeshAgent agent;
 
     [SerializeField] int index;
@@ -123,6 +127,13 @@ public class NonPlayer : MonoBehaviour
         }
     }
 
+    public void ReportPolisi()
+    {
+        textNPC.text = text;
+        textNPC.transform.parent.gameObject.SetActive(true);
+
+        GameplayManager.instance.CallPolice();
+    }
 
 
     void SetWaypoint()

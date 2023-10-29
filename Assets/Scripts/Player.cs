@@ -6,6 +6,8 @@ public class Player : MonoBehaviour
 {
     public static Player instance;
 
+    public bool active;
+
     public float speedMove = 5;
     [ReadOnly] public float m_speedMove;
     float y;
@@ -41,6 +43,8 @@ public class Player : MonoBehaviour
     }
     private void Start()
     {
+        active = true;
+
         uiGameplay = UIGameplay.instance;
 
         jarakTempuh = SaveData.instance.gameData.jarakTempuh;
@@ -55,7 +59,11 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        Move();
+        if (active)
+        {
+            Move();
+        }
+
         AkselerasiSpeed();
         RemPC();
 

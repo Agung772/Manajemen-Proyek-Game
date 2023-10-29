@@ -4,15 +4,37 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] GameObject[] objectives;
+    [SerializeField] int index;
+    private void Start()
     {
-        
+        objectives = new GameObject[transform.childCount];
+        for (int i = 0; i < objectives.Length; i++)
+        {
+            objectives[i] = transform.GetChild(i).gameObject;
+
+            if (i != 0)
+            {
+                objectives[i].SetActive(false);
+            }
+
+            objectives[i].GetComponent<Objective>().levelManager = this;
+
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetIndex()
     {
-        
+        if (index == objectives.Length - 1)
+        {
+            Debug.Log("Finish");
+            Player.instance.active = false;
+        }
+        else
+        {
+            index++;
+            objectives[index].SetActive(true);
+            objectives[index - 1].SetActive(false);
+        }
     }
 }
