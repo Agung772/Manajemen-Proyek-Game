@@ -38,6 +38,13 @@ public class GameplayManager : MonoBehaviour
     public void CallPolice()
     {
         Debug.LogWarning("KEJAR PLAYER");
+        Polisi[] poliss = FindObjectsOfType<Polisi>();
+        for(int i = 0; i < poliss.Length; i++)
+        {
+            poliss[i].enabled = true;
+            poliss[i].GetComponent<NonPlayer>().enabled = false;
+        }
+        print(poliss.Length);
     }
     public void SetKlakson()
     {

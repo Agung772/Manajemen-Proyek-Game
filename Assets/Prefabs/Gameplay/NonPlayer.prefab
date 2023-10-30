@@ -307,6 +307,7 @@ GameObject:
   - component: {fileID: 3630149993852202325}
   - component: {fileID: 8282068637508678734}
   - component: {fileID: 4907197562710747611}
+  - component: {fileID: 8493945338419199538}
   m_Layer: 0
   m_Name: NonPlayer
   m_TagString: Untagged
@@ -393,6 +394,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 2.6858673}
   m_Center: {x: 0, y: 0, z: -0.036727905}
+--- !u!54 &8493945338419199538
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4496867317985460881}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &4890719246279384758
 GameObject:
   m_ObjectHideFlags: 0
