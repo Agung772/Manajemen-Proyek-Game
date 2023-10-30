@@ -53,6 +53,7 @@ MonoBehaviour:
   saveData: {fileID: 8265687021662803630}
   audioManager: {fileID: 917885166913541937}
   achievementManager: {fileID: 2713492369501862621}
+  dataStatic: {fileID: 5805343288616790708}
   sprites: []
 --- !u!114 &2959955713913145697
 MonoBehaviour:
@@ -1438,6 +1439,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9018664315615401762}
   - component: {fileID: 8265687021662803630}
+  - component: {fileID: 5805343288616790708}
   m_Layer: 0
   m_Name: SaveData
   m_TagString: Untagged
@@ -1477,9 +1479,40 @@ MonoBehaviour:
     jarakTempuh: 0
     codeSkinPlayer: 1
     level: 1
-    gameTimaLevel1: 0
-    gameTimaLevel2: 0
-    gameTimaLevel3: 0
+    gameTimeLevel:
+    - 0
+    - 0
+    - 0
+    - 0
+--- !u!114 &5805343288616790708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5477770310284370509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6b19751604ca964ba17bdd8eab0ad6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreIngameLevel:
+  - stars: []
+  - stars:
+    - 0
+    - 30
+    - 15
+    - 7
+  - stars:
+    - 0
+    - 120
+    - 80
+    - 60
+  - stars:
+    - 0
+    - 120
+    - 80
+    - 60
 --- !u!1 &5793676735274501111
 GameObject:
   m_ObjectHideFlags: 0

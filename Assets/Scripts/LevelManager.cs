@@ -29,6 +29,8 @@ public class LevelManager : MonoBehaviour
         {
             Debug.Log("Finish");
             Player.instance.active = false;
+
+            GameplayManager.instance.FinishUI();
         }
         else
         {

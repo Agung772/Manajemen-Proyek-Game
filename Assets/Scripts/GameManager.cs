@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] SaveData saveData;
     [SerializeField] AudioManager audioManager;
     [SerializeField] AchievementManager achievementManager;
+    [SerializeField] DataStatic dataStatic;
 
     public Sprite[] sprites;
     private void Awake()
@@ -23,6 +24,7 @@ public class GameManager : MonoBehaviour
             SaveData.instance = saveData;
             AudioManager.instance = audioManager;
             AchievementManager.instance = achievementManager;
+            DataStatic.instance = dataStatic;
 
             saveData.Load();
             DontDestroyOnLoad(gameObject);

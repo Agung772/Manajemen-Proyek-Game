@@ -142,4 +142,12 @@ public class NonPlayer : MonoBehaviour
         index++;
         if (index == waypoints.Length) index = 0;
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.CompareTag("Player") && enabled)
+        {
+            ReportPolisi();
+        }
+    }
 }

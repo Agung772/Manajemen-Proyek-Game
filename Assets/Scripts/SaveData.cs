@@ -20,10 +20,16 @@ public class SaveData : MonoBehaviour
 
     public void Load()
     {
-        string filePath = Application.persistentDataPath + "/GameData.jhon";
-        string data = System.IO.File.ReadAllText(filePath);
 
-        gameData = JsonUtility.FromJson<GameData>(data);
+        string filePath = Application.persistentDataPath + "/GameData.jhon";
+
+        if (System.IO.File.Exists(filePath))
+        {
+            string data = System.IO.File.ReadAllText(filePath);
+
+            gameData = JsonUtility.FromJson<GameData>(data);
+        }
+
     }
 }
 
@@ -37,7 +43,5 @@ public class GameData
     public int codeSkinPlayer = 1;
     public int level = 1;
 
-    public float gameTimaLevel1;
-    public float gameTimaLevel2;
-    public float gameTimaLevel3;
+    public float[] gameTimeLevel;
 }

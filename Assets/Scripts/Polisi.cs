@@ -29,6 +29,8 @@ public class Polisi : MonoBehaviour
         {
             player.active = false;
             active = false;
+
+            GameplayManager.instance.SetFinish(0);
         }
     }
 }

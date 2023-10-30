@@ -54,6 +54,11 @@ public class UIGameplay : MonoBehaviour
 
         AudioManager.instance.SetSFX(AudioManager.instance.buttonActSfx.name);
     }
-
+    bool defeat;
+    public void DefeatUI()
+    {
+        if (defeat) return;
+        defeat = true;
+    }
 
 }
