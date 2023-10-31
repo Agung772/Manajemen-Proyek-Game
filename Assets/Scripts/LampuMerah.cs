@@ -72,6 +72,7 @@ public class LampuMerah : MonoBehaviour
             if (merah)
             {
                 Debug.LogWarning("Player menerobos lampu merah");
+                GameplayManager.instance.CallPolice();
                 Handheld.Vibrate();
             }
         }

@@ -15,6 +15,9 @@ public class GameplayManager : MonoBehaviour
 
     [Header("Finish")]
     public GameObject finishUI;
+
+    [Header("Levels")]
+    public GameObject[] levels;
     private void Awake()
     {
         instance = this;
@@ -23,6 +26,25 @@ public class GameplayManager : MonoBehaviour
     {
         uiGameplay = UIGameplay.instance;
         SetChargerUI(false);
+
+        if (SaveData.instance.gameData.level == 1)
+        {
+            levels[1].SetActive(true);
+            levels[2].SetActive(false);
+            levels[3].SetActive(false);
+        }
+        else if (SaveData.instance.gameData.level == 2)
+        {
+            levels[1].SetActive(false);
+            levels[2].SetActive(true);
+            levels[3].SetActive(false);
+        }
+        else if (SaveData.instance.gameData.level == 3)
+        {
+            levels[1].SetActive(false);
+            levels[2].SetActive(false);
+            levels[3].SetActive(true);
+        }
     }
     private void Update()
     {
@@ -49,21 +71,23 @@ public class GameplayManager : MonoBehaviour
             poliss[i].enabled = true;
             poliss[i].GetComponent<NonPlayer>().enabled = false;
         }
+
+        AudioManager.instance.SetLoopSfx(AudioManager.instance.polisiSfx.name, true);
     }
     public void FinishUI()
     {
         var dataStatic = DataStatic.instance;
         var gameData = SaveData.instance.gameData;
 
-        if (gameTime < dataStatic.scoreIngameLevel[gameData.level].stars[3])
+        if (gameTime <= dataStatic.scoreIngameLevel[gameData.level].stars[3])
         {
             SetFinish(3);
         }
-        else if (gameTime < dataStatic.scoreIngameLevel[gameData.level].stars[2])
+        else if (gameTime <= dataStatic.scoreIngameLevel[gameData.level].stars[2])
         {
             SetFinish(2);
         }
-        else if (gameTime >= dataStatic.scoreIngameLevel[gameData.level].stars[1])
+        else if (gameTime <= dataStatic.scoreIngameLevel[gameData.level].stars[1])
         {
             SetFinish(1);
         }
@@ -80,14 +104,11 @@ public class GameplayManager : MonoBehaviour
         finishUI.SetActive(true);
         finishUI.GetComponent<FinishUI>().Set(value);
 
-        if (value == 1)
-        {
-
-        }
+        saveTimeIngame();
 
         void saveTimeIngame()
         {
-            if (gameTime > gameData.gameTimeLevel[gameData.level])
+            if (gameTime < gameData.gameTimeLevel[gameData.level] || gameData.gameTimeLevel[gameData.level] == 0)
             {
                 gameData.gameTimeLevel[gameData.level] = gameTime;
             }

@@ -156,10 +156,10 @@ public class Player : MonoBehaviour
         IEnumerator Coroutine()
         {
             tanpaTrail = true;
-            Rem(true);
+            rem = true;
             yield return new WaitForSeconds(1);
             tanpaTrail = false;
-            Rem(false);
+            rem = false;
         }
     }
 

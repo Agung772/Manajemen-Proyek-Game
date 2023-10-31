@@ -37,6 +37,7 @@ public class UIGameplay : MonoBehaviour
         UIManager.instance.PindahScene(value);
 
         AudioManager.instance.SetSFX(AudioManager.instance.buttonActSfx.name);
+
     }
 
     public void Pause(bool value)

@@ -19,6 +19,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip notifActSfx;
     public AudioClip buttonActSfx;
     public AudioClip remSfx;
+    public AudioClip polisiSfx;
 
     public void SetBGM(string value)
     {
@@ -52,6 +53,7 @@ public class AudioManager : MonoBehaviour
 
     AudioSource audioSourceremSfx;
     AudioSource audioSourceklaksonSfx;
+    AudioSource audioSourcePolisiSfx;
     public void SetLoopSfx(string value, bool condition)
     {
         if (value == remSfx.name)
@@ -80,6 +82,20 @@ public class AudioManager : MonoBehaviour
             else
             {
                 audioSourceklaksonSfx.Stop();
+            }
+        }
+        else if (value == polisiSfx.name)
+        {
+            if (audioSourcePolisiSfx == null) audioSourcePolisiSfx = Instantiate(audioSourceBgm, transform);
+            audioSourcePolisiSfx.name = "AudioSource " + value;
+            if (condition)
+            {
+                audioSourcePolisiSfx.clip = polisiSfx;
+                audioSourcePolisiSfx.Play();
+            }
+            else
+            {
+                audioSourcePolisiSfx.Stop();
             }
         }
     }

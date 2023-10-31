@@ -14,7 +14,7 @@ public class NonCollider : MonoBehaviour
             IEnumerator Coroutine()
             {
                 collider.enabled = false;
-                yield return new WaitForSeconds(2);
+                yield return new WaitForSeconds(10);
                 collider.enabled = true;
             }
         }

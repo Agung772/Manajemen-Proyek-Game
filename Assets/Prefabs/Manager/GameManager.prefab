@@ -881,7 +881,8 @@ MonoBehaviour:
   motorEmakSfx: {fileID: 8300000, guid: 0612427b35b000d4e9a7798ef7d6e124, type: 3}
   notifActSfx: {fileID: 8300000, guid: 87033d7e31c406645b1071aeeeced559, type: 3}
   buttonActSfx: {fileID: 8300000, guid: 361cb4e3d2bf6974cb486e69a95e4379, type: 3}
-  remSfx: {fileID: 8300000, guid: cbdd4f27c26deb044bd7a6e38e3bd089, type: 3}
+  remSfx: {fileID: 8300000, guid: b98d1d3c66e801f4397b615873e16b05, type: 3}
+  polisiSfx: {fileID: 8300000, guid: 1ed074904f4d8cd469953b3ac7d02195, type: 3}
 --- !u!1 &3878784677329381649
 GameObject:
   m_ObjectHideFlags: 0
@@ -1501,18 +1502,18 @@ MonoBehaviour:
   - stars:
     - 0
     - 30
-    - 15
+    - 10
     - 7
   - stars:
     - 0
-    - 120
-    - 80
-    - 60
+    - 30
+    - 10
+    - 7
   - stars:
     - 0
-    - 120
-    - 80
-    - 60
+    - 30
+    - 10
+    - 7
 --- !u!1 &5793676735274501111
 GameObject:
   m_ObjectHideFlags: 0

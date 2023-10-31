@@ -129,8 +129,12 @@ public class NonPlayer : MonoBehaviour
 
     public void ReportPolisi()
     {
-        textNPC.text = text;
-        textNPC.transform.parent.gameObject.SetActive(true);
+        if (textNPC != null)
+        {
+            textNPC.text = text;
+            textNPC.transform.parent.gameObject.SetActive(true);
+        }
+
 
         GameplayManager.instance.CallPolice();
     }

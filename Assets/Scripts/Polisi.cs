@@ -9,10 +9,13 @@ public class Polisi : MonoBehaviour
     [SerializeField] NavMeshAgent agent;
 
     Player player;
+
+    public GameObject lampuPolisi;
     private void Start()
     {
         player = Player.instance;
         active = true;
+        lampuPolisi.SetActive(true);
     }
     private void Update()
     {
@@ -27,10 +30,12 @@ public class Polisi : MonoBehaviour
     {
         if (collision.collider.CompareTag("Player"))
         {
+            player = Player.instance;
             player.active = false;
             active = false;
 
             GameplayManager.instance.SetFinish(0);
+            AudioManager.instance.SetLoopSfx(AudioManager.instance.polisiSfx.name, false);
         }
     }
 }
