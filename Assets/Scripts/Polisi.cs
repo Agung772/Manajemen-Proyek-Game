@@ -11,11 +11,13 @@ public class Polisi : MonoBehaviour
     Player player;
 
     public GameObject lampuPolisi;
+    public GameObject kataText;
     private void Start()
     {
         player = Player.instance;
         active = true;
         lampuPolisi.SetActive(true);
+        kataText.SetActive(true);
     }
     private void Update()
     {

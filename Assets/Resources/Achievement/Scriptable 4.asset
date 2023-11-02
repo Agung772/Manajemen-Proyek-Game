@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2db2c4f2b639db1448a56540826b1cf1, type: 3}
   m_Name: Scriptable 4
   m_EditorClassIdentifier: 
-  namaAchievement: Trobos lampu merah 5 kali
+  namaAchievement: Trobos lampu merah
   maxValue: 5

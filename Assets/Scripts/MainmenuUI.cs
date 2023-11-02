@@ -9,6 +9,8 @@ public class MainmenuUI : MonoBehaviour
     private void Start()
     {
         uiManager = UIManager.instance;
+
+        AudioManager.instance.SetBGM(AudioManager.instance.mainmenuBgm.name);
     }
 
     public void PindahScene(string value)

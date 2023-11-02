@@ -31,6 +31,14 @@ public class LevelManager : MonoBehaviour
             Player.instance.active = false;
 
             GameplayManager.instance.FinishUI();
+
+            AudioManager.instance.SetLoopSfx(AudioManager.instance.polisiSfx.name, false);
+
+            NonPlayer[] npcs = FindObjectsOfType<NonPlayer>();
+            for (int i = 0; i < npcs.Length; i++)
+            {
+                npcs[i].nonActive = true;
+            }
         }
         else
         {

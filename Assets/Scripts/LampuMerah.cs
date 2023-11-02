@@ -64,16 +64,20 @@ public class LampuMerah : MonoBehaviour
             StartSistem();
         }
     }
-
+    bool active;
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<Player>())
         {
-            if (merah)
+            if (merah && !active)
             {
+                active = true;
                 Debug.LogWarning("Player menerobos lampu merah");
+                UIManager.instance.SpawnNotifText("Kamu menerobos APILL    (Alat Pemberi Isyarat Lalu Lintas)");
                 GameplayManager.instance.CallPolice();
                 Handheld.Vibrate();
+
+                AchievementManager.instance.AddValue("Trobos lampu merah", 1);
             }
         }
     }

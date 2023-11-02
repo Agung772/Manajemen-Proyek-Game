@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Scriptable 6
   m_EditorClassIdentifier: 
   namaAchievement: Selesaikan level tanpa pelanggaran
-  maxValue: 1
+  maxValue: 3

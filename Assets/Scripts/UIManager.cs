@@ -12,6 +12,7 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] Transform parentSpawnAct;
     [SerializeField] GameObject NotifAct;
+    [SerializeField] GameObject NotifText;
 
     [Header("Transisi")]
     [SerializeField] Animator transisiAnimator;
@@ -46,7 +47,9 @@ public class UIManager : MonoBehaviour
                     yield return new WaitForSeconds(0.5f);
                     loadScene.allowSceneActivation = true;
 
+                    yield return new WaitForSeconds(0.5f);
                     transisiAnimator.Play("Exit");
+
 
                     cdPindahScene = false;
                     print("Selesai pindah scene");
@@ -92,6 +95,12 @@ public class UIManager : MonoBehaviour
     public void SpawnNotifAct(string body)
     {
         NotifAct sc = Instantiate(NotifAct, parentSpawnAct).GetComponent<NotifAct>();
+        sc.Set(body);
+    }
+
+    public void SpawnNotifText(string body)
+    {
+        NotifText sc = Instantiate(NotifText, parentSpawnAct).GetComponent<NotifText>();
         sc.Set(body);
     }
 }

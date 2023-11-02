@@ -32,7 +32,7 @@ public class Player : MonoBehaviour
     public float maxSpeedometer;
     public float minAngleArrow;
     public float maxAngleArrow;
-    float speedKMH;
+    public float speedKMH;
 
     [Header("Baterai")]
     public float maxKMBaterai;
@@ -118,15 +118,35 @@ public class Player : MonoBehaviour
         animator.Play(value);
     }
 
+    bool suaraRem;
     void AkselerasiSpeed()
     {
         if (rem)
         {
             m_speedMove = Mathf.Lerp(m_speedMove, 0, 1 * Time.deltaTime);
+
+            if (m_speedMove > 15 && !suaraRem)
+            {
+                suaraRem = true;
+                AudioManager.instance.SetLoopSfx(AudioManager.instance.remSfx.name, true);
+                Debug.Log("Rem");
+            }
+            else if (m_speedMove <= 15 && suaraRem)
+            {
+                suaraRem = false;
+                AudioManager.instance.SetLoopSfx(AudioManager.instance.remSfx.name, false);
+            }
         }
         else 
         {
             m_speedMove = Mathf.Lerp(m_speedMove, speedMove, 0.1f * Time.deltaTime);
+
+            if (suaraRem)
+            {
+                suaraRem = false;
+                AudioManager.instance.SetLoopSfx(AudioManager.instance.remSfx.name, false);
+            }
+
         }
     }
 
@@ -134,8 +154,6 @@ public class Player : MonoBehaviour
     public void Rem(bool value)
     {
         rem = value;
-
-        AudioManager.instance.SetLoopSfx(AudioManager.instance.remSfx.name, value);
     }
     public void RemPC()
     {
@@ -172,6 +190,11 @@ public class Player : MonoBehaviour
         speedKMH = charController.velocity.magnitude * 3.6f;
         uiGameplay.speedText.text = speedKMH.ToString("F0");
         uiGameplay.indikatorImage.fillAmount = speedKMH / speedMove;
+
+        if (AchievementManager.instance.achievementUI.achievementPrefabs[1].achievementData.value < m_speedMove)
+        {
+            AchievementManager.instance.SetValue("Capai kecepatan 80 km/h", int.Parse(m_speedMove.ToString("F0")));
+        }
     }
 
     void JarakTempuh()
@@ -181,6 +204,7 @@ public class Player : MonoBehaviour
         SaveData.instance.gameData.jarakTempuh = jarakTempuh;
     }
     public bool bateraiCharger;
+    bool bateraiLemah;
     void BateraiUI()
     {
         //Rata rata max 50km
@@ -192,6 +216,23 @@ public class Player : MonoBehaviour
         {
             baterai -= charController.velocity.magnitude * Time.deltaTime / 1000;
         }
+
+        if (baterai < maxKMBaterai / 8 && !bateraiLemah)
+        {
+            bateraiLemah = true;
+            UIManager.instance.SpawnNotifText("Baterai lemah");
+        }
+        else if (baterai > maxKMBaterai / 8 && bateraiLemah)
+        {
+            bateraiLemah = false;
+        }
+
+        if (baterai <= 0)
+        {
+            GameplayManager.instance.SetFinish(0);
+            active = false;
+        }
+
         uiGameplay.bateraiImage.fillAmount = baterai / maxKMBaterai;
     }
 

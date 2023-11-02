@@ -29,6 +29,7 @@ public class UIGameplay : MonoBehaviour
 
     public void SetAchievementUI(bool value)
     {
+        Pause(false);
         UIManager.instance.SetAchievementUI(value);
     }
 
@@ -61,5 +62,4 @@ public class UIGameplay : MonoBehaviour
         if (defeat) return;
         defeat = true;
     }
-
 }

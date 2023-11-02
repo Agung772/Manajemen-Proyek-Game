@@ -21,23 +21,25 @@ public class LevelUI : MonoBehaviour
 
         var dataStatic = DataStatic.instance;
         var gameData = SaveData.instance.gameData;
-        float loadTime = SaveData.instance.gameData.gameTimeLevel[levelIndex];
+        int loadTime = (int)SaveData.instance.gameData.gameTimeLevel[levelIndex];
 
-        timeText.text = loadTime.ToString("F1");
+        float menit = Mathf.FloorToInt(loadTime / 60);
+        float detik = Mathf.FloorToInt(loadTime % 60);
+        timeText.text = string.Format("{0:00}:{1:00}", menit, detik);
 
         if (loadTime == 0) return;
-        if (loadTime <= dataStatic.scoreIngameLevel[gameData.level].stars[3])
+        if (loadTime <= dataStatic.scoreIngameLevel[levelIndex].stars[3])
         {
             stars[1].SetActive(true);
             stars[2].SetActive(true);
             stars[3].SetActive(true);
         }
-        else if (loadTime <= dataStatic.scoreIngameLevel[gameData.level].stars[2])
+        else if (loadTime <= dataStatic.scoreIngameLevel[levelIndex].stars[2])
         {
             stars[1].SetActive(true);
             stars[2].SetActive(true);
         }
-        else if (loadTime <= dataStatic.scoreIngameLevel[gameData.level].stars[1])
+        else if (loadTime > dataStatic.scoreIngameLevel[levelIndex].stars[2])
         {
             stars[1].SetActive(true);
         }

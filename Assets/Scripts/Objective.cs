@@ -21,6 +21,8 @@ public class Objective : MonoBehaviour
             }
 
             levelManager.SetIndex();
+
+            AudioManager.instance.SetSFX(AudioManager.instance.misiSfx.name);
         }
     }
 }

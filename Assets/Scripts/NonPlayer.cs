@@ -6,7 +6,7 @@ using UnityEngine.AI;
 using System;
 public class NonPlayer : MonoBehaviour
 {
-    [SerializeField] string text;
+    [SerializeField] string[] texts;
     [SerializeField] TextMeshProUGUI textNPC;
 
     [SerializeField] NavMeshAgent agent;
@@ -20,11 +20,15 @@ public class NonPlayer : MonoBehaviour
     public RaycastHit hit;
 
     bool detecPlayer;
-    bool nonActive;
+    public bool nonActive;
     float idleTime;
 
+    [SerializeField] Animator senAnimator;
     private void Start()
     {
+        SetSen();
+
+
         if (primary != null)
         {
             primary.color = new Color(
@@ -92,6 +96,15 @@ public class NonPlayer : MonoBehaviour
         }
     }
 
+    void SetSen()
+    {
+        if (senAnimator == null) return;
+
+        int random = UnityEngine.Random.Range(0, 3);
+        if (random == 0) senAnimator.Play("Default");
+        else if (random == 1) senAnimator.Play("Kiri");
+        else if (random == 2) senAnimator.Play("Kanan");
+    }
     void AINonPlayer()
     {
         if (nonActive) return;
@@ -131,7 +144,10 @@ public class NonPlayer : MonoBehaviour
     {
         if (textNPC != null)
         {
-            textNPC.text = text;
+            int random = UnityEngine.Random.Range(0, texts.Length);
+
+            textNPC.text = texts[random];
+
             textNPC.transform.parent.gameObject.SetActive(true);
         }
 

@@ -9,6 +9,7 @@ public class DilarangRambu : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             GameplayManager.instance.CallPolice();
+            UIManager.instance.SpawnNotifText("Kamu menerobos rambu larangan");
         }
     }
 }

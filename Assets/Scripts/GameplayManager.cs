@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class GameplayManager : MonoBehaviour
 {
     public static GameplayManager instance;
@@ -15,6 +15,7 @@ public class GameplayManager : MonoBehaviour
 
     [Header("Finish")]
     public GameObject finishUI;
+    public TextMeshProUGUI timesupText;
 
     [Header("Levels")]
     public GameObject[] levels;
@@ -45,6 +46,8 @@ public class GameplayManager : MonoBehaviour
             levels[2].SetActive(false);
             levels[3].SetActive(true);
         }
+
+        AudioManager.instance.SetBGM(AudioManager.instance.gameplayBgm.name);
     }
     private void Update()
     {
@@ -79,15 +82,15 @@ public class GameplayManager : MonoBehaviour
         var dataStatic = DataStatic.instance;
         var gameData = SaveData.instance.gameData;
 
-        if (gameTime <= dataStatic.scoreIngameLevel[gameData.level].stars[3])
+        if ((int)gameTime <= dataStatic.scoreIngameLevel[gameData.level].stars[3])
         {
             SetFinish(3);
         }
-        else if (gameTime <= dataStatic.scoreIngameLevel[gameData.level].stars[2])
+        else if ((int)gameTime <= dataStatic.scoreIngameLevel[gameData.level].stars[2])
         {
             SetFinish(2);
         }
-        else if (gameTime <= dataStatic.scoreIngameLevel[gameData.level].stars[1])
+        else if ((int)gameTime > dataStatic.scoreIngameLevel[gameData.level].stars[2])
         {
             SetFinish(1);
         }
@@ -104,19 +107,35 @@ public class GameplayManager : MonoBehaviour
         finishUI.SetActive(true);
         finishUI.GetComponent<FinishUI>().Set(value);
 
+        float menit = Mathf.FloorToInt(gameTime / 60);
+        float detik = Mathf.FloorToInt(gameTime % 60);
+        timesupText.text = "Waktu permainan " + string.Format("{0:00}:{1:00}", menit, detik);
+
         saveTimeIngame();
 
         void saveTimeIngame()
         {
-            if (gameTime < gameData.gameTimeLevel[gameData.level] || gameData.gameTimeLevel[gameData.level] == 0)
+            if (value != 0 && gameTime < gameData.gameTimeLevel[gameData.level] || value != 0 && gameData.gameTimeLevel[gameData.level] == 0)
             {
-                gameData.gameTimeLevel[gameData.level] = gameTime;
+                gameData.gameTimeLevel[gameData.level] = (int)gameTime;
+
+                //Achievement
+                if (callPolisi)
+                {
+                    AchievementManager.instance.AddValue("Selesaikan level tanpa pelanggaran", 1);
+                }
+                if (Player.instance.baterai < Player.instance.maxKMBaterai / 8)
+                {
+                    AchievementManager.instance.AddValue("Sisa 20% Baterai Sampai Finis", 1);
+                }
             }
         }
     }
     public void SetKlakson()
     {
         Player.instance.SetKlakson();
+
+        AchievementManager.instance.AddValue("Tekan klakson", 1);
     }
     public void RemPlayer(bool value)
     {

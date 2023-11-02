@@ -23,6 +23,8 @@ public class PilihLevelUI : MonoBehaviour
 
         UnsetMotorUI();
         parentMotor.GetChild(0).GetComponent<MotorUI>().Set();
+
+        AudioManager.instance.SetBGM(AudioManager.instance.mainmenuBgm.name);
     }
 
     public void PindahScene(string value)

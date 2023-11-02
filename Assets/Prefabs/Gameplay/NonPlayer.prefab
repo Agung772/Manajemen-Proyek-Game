@@ -345,12 +345,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 145dc0d8f96591643adf1317cd9cff5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: Hati - hati dong
+  texts:
+  - Hati - hati dong
+  - Lihat - lihat dong
+  - Pelan - pelan dong bawa motornya
+  - "Tolong kurangi kecepatan\_anda"
   textNPC: {fileID: 6334421406632478322}
   agent: {fileID: 8282068637508678734}
   index: 0
   waypoints: []
   primary: {fileID: 6223037069991496741}
+  senAnimator: {fileID: 2804701569694268900}
 --- !u!195 &8282068637508678734
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -791,7 +796,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: d4c87a2db6adeba4996c73b8096450da, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -839,7 +844,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 65, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 1.82, y: -0}
+  m_AnchoredPosition: {x: 2.06, y: -0}
   m_SizeDelta: {x: 5, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &2041873055847814331

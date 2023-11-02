@@ -20,9 +20,12 @@ public class AudioManager : MonoBehaviour
     public AudioClip buttonActSfx;
     public AudioClip remSfx;
     public AudioClip polisiSfx;
+    public AudioClip misiSfx;
 
     public void SetBGM(string value)
     {
+        if (audioSourceBgm.clip.name == value) return;
+
         if (value == mainmenuBgm.name)
         {
             audioSourceBgm.clip = mainmenuBgm;
@@ -49,6 +52,10 @@ public class AudioManager : MonoBehaviour
         {
             audioSourceSfx.PlayOneShot(klaksonSfx);
         }
+        else if (value == misiSfx.name)
+        {
+            audioSourceSfx.PlayOneShot(misiSfx);
+        }
     }
 
     AudioSource audioSourceremSfx;
@@ -64,6 +71,7 @@ public class AudioManager : MonoBehaviour
             {
                 audioSourceremSfx.clip = remSfx;
                 audioSourceremSfx.Play();
+                audioSourceremSfx.volume = 0.4f;
             }
             else
             {
@@ -92,6 +100,7 @@ public class AudioManager : MonoBehaviour
             {
                 audioSourcePolisiSfx.clip = polisiSfx;
                 audioSourcePolisiSfx.Play();
+                audioSourcePolisiSfx.volume = 0.5f;
             }
             else
             {
