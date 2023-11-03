@@ -109,25 +109,24 @@ public class GameplayManager : MonoBehaviour
 
         float menit = Mathf.FloorToInt(gameTime / 60);
         float detik = Mathf.FloorToInt(gameTime % 60);
-        timesupText.text = "Waktu permainan " + string.Format("{0:00}:{1:00}", menit, detik);
 
-        saveTimeIngame();
+        //Set UI
+        if (value == 0) timesupText.text = "Kamu ditangkap polisi";
+        else if (value != 0) timesupText.text = "Waktu permainan " + string.Format("{0:00}:{1:00}", menit, detik);
 
-        void saveTimeIngame()
+
+        if (value != 0 && gameTime < gameData.gameTimeLevel[gameData.level] || value != 0 && gameData.gameTimeLevel[gameData.level] == 0)
         {
-            if (value != 0 && gameTime < gameData.gameTimeLevel[gameData.level] || value != 0 && gameData.gameTimeLevel[gameData.level] == 0)
-            {
-                gameData.gameTimeLevel[gameData.level] = (int)gameTime;
+            gameData.gameTimeLevel[gameData.level] = (int)gameTime;
 
-                //Achievement
-                if (callPolisi)
-                {
-                    AchievementManager.instance.AddValue("Selesaikan level tanpa pelanggaran", 1);
-                }
-                if (Player.instance.baterai < Player.instance.maxKMBaterai / 8)
-                {
-                    AchievementManager.instance.AddValue("Sisa 20% Baterai Sampai Finis", 1);
-                }
+            //Achievement
+            if (callPolisi)
+            {
+                AchievementManager.instance.AddValue("Selesaikan level tanpa pelanggaran", 1);
+            }
+            if (Player.instance.baterai < Player.instance.maxKMBaterai / 8)
+            {
+                AchievementManager.instance.AddValue("Sisa 20% Baterai Sampai Finis", 1);
             }
         }
     }

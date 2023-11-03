@@ -39,6 +39,8 @@ public class UIGameplay : MonoBehaviour
 
         AudioManager.instance.SetSFX(AudioManager.instance.buttonActSfx.name);
 
+        AudioManager.instance.SetLoopSfx(AudioManager.instance.polisiSfx.name, false);
+
     }
 
     public void Pause(bool value)
